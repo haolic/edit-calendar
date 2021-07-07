@@ -18,6 +18,10 @@ const Datepicker: React.FC<IDatepicker> = (props) => {
     onChange(dayjs(value).subtract(1, 'month').format());
   };
 
+  const goToday = () => {
+    onChange(dayjs().format())
+  }
+
   return (
     <div className="hlc-datepicker-wrap">
       <div onClick={subtract} className="hlc-calendar-datepicker-btn">
@@ -26,6 +30,11 @@ const Datepicker: React.FC<IDatepicker> = (props) => {
       <div>{dayjs(value).format('YYYY 年 MM 月')}</div>
       <div onClick={addDate} className="hlc-calendar-datepicker-btn">
         <i className="hlc-calendar hlc-calendar-icon-right"></i>
+      </div>
+      <div className="hlc-to-today">
+        <span className="hlc-to-today-text" role="button" onClick={goToday}>
+          今天
+        </span>
       </div>
     </div>
   );

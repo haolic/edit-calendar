@@ -3,9 +3,35 @@
   justify-content: space-between;
   align-items: center;
   width: 300px;
+  height: 36px;
 }
 .hlc-calendar-datepicker-btn {
   cursor: pointer;
   user-select: none;
   font-size: 20px;
+}
+
+.hlc-to-today {
+  position: absolute;
+  height: 36px;
+  right: 0px;
+  top: 0px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.hlc-to-today-text {
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+  border: 1px solid #ccc;
+  padding: 0 12px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: border-color 0.25s, color 0.25s;
+  user-select: none;
+  &:hover {
+    border-color: #69abe4;
+    color: #69abe4;
+  }
 }

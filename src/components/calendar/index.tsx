@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
 import Datepicker from '../datepicker';
 import Datepanel from '../datepanel';
+import Daypanel from '../daypanel';
 
 import './index.less';
 
@@ -20,11 +21,12 @@ const Calendar: React.FC<ICalendar> = (props) => {
   }, [currentDate]);
 
   const changeDate = (val: string) => {
-    setNowDate(val);
+    setNowDate(currentDate || val);
   };
   return (
     <div className="hlc-calendar">
       <Datepicker value={nowDate} onChange={changeDate} />
+      <Daypanel />
       <Datepanel value={nowDate} />
     </div>
   );

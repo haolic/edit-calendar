@@ -1,0 +1,52 @@
+@border: 1px solid rgb(230, 230, 230);
+
+.hlc-datepanel {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hlc-daterow {
+  display: flex;
+  width: 100%;
+  &:last-child {
+    .hlc-dateitem {
+      border-bottom: @border;
+    }
+  }
+}
+
+.hlc-dateitem {
+  flex: 1;
+  min-height: 60px;
+  text-align: right;
+  border-left: @border;
+  border-top: @border;
+  transition: background 0.25s;
+  padding: 8px;
+  &:last-child {
+    border-right: @border;
+  }
+  &:hover {
+    background: #e6f7ff;
+  }
+}
+
+.not-current-month {
+  color: #ccc;
+}
+
+.date-text {
+  border-radius: 50%;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+}
+
+.current-date {
+  .date-text {
+    color: #fff;
+    background-color: #69abe4;
+  }
+}

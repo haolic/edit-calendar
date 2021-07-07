@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import dayjs from '_dayjs@1.10.6@dayjs';
+import dayjs from 'dayjs';
 import Calendar from './index';
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
   // };
   return (
     <div>
-      <Calendar defaultCurrentDate={dayjs('2020-02-01').format()} />
+      <Calendar defaultCurrentDate={dayjs('2021-07-14').format()} />
       {/* <button onClick={changeDate}>点击改变时间</button> */}
     </div>
   );
