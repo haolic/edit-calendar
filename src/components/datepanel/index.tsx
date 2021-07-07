@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import _ from 'lodash';
 import classnames from 'classnames';
+import { DATE_FORMAT_STR } from '@/config/constant';
 
 import './index.less';
 
@@ -41,7 +42,6 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
           <div key={rowIdx} className="hlc-daterow">
             {dateRow.map((date) => {
               const currentDayjs = dayjs(date);
-              console.log(currentDayjs.format('YYYY-MM-DD'), dayjs().format('YYYY-MM-DD'))
               const cls = classnames('hlc-dateitem', {
                 'not-current-month':
                   currentDayjs.isBefore(dayjsMonthStart) ||
