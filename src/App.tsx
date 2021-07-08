@@ -3,15 +3,14 @@ import dayjs from 'dayjs';
 import Calendar from './index';
 
 const App = () => {
-  // const [date, setDate] = useState(dayjs('2020-02-01').format());
+  const [date, setDate] = useState(dayjs());
 
-  // const changeDate = () => {
-  //   setDate(dayjs(date).subtract(1, 'month').format());
-  // };
+  const changeDate = (newDate: dayjs.Dayjs) => {
+    setDate(newDate);
+  };
   return (
     <div>
-      <Calendar defaultCurrentDate={dayjs('2021-07-14').format()} />
-      {/* <button onClick={changeDate}>点击改变时间</button> */}
+      <Calendar currentDate={date} onChange={changeDate} />
     </div>
   );
 };

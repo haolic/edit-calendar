@@ -7,20 +7,21 @@ import Daypanel from '../daypanel';
 import './index.less';
 
 interface ICalendar {
-  defaultCurrentDate?: string;
-  currentDate?: string;
+  defaultCurrentDate?: dayjs.Dayjs;
+  currentDate?: dayjs.Dayjs;
+  onChange?: (val: dayjs.Dayjs) => void;
 }
 
 const Calendar: React.FC<ICalendar> = (props) => {
   const { defaultCurrentDate, currentDate } = props;
 
-  const [nowDate, setNowDate] = useState<string>(dayjs().format());
+  const [nowDate, setNowDate] = useState<dayjs.Dayjs>(dayjs());
 
   useEffect(() => {
-    setNowDate(currentDate || defaultCurrentDate || dayjs().format());
+    setNowDate(currentDate || defaultCurrentDate || dayjs());
   }, [currentDate]);
 
-  const changeDate = (val: string) => {
+  const changeDate = (val: dayjs.Dayjs) => {
     setNowDate(currentDate || val);
   };
   return (
