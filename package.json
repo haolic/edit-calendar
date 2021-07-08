@@ -1,5 +1,8 @@
 {
+  "name": "edit-calendar",
   "version": "1.0.0",
+  "description": "edit-calendar",
+  "main": "index.ts",
   "scripts": {
     "dev": "vite --port=9999 --host",
     "start": "vite --port=9999 --host",
@@ -21,5 +24,10 @@
     "less": "^4.1.1",
     "typescript": "^4.3.2",
     "vite": "^2.4.0"
-  }
+  },
+  "keywords": [
+    "edit",
+    "calendar"
+  ],
+  "author": "faruxue"
 }
