@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import dayjs, { Dayjs } from 'dayjs';
+import { Dayjs } from 'dayjs';
 import _ from 'lodash';
-import classnames from 'classnames';
+import DateCell from '../date-cell';
 
 import './index.less';
 
@@ -40,19 +40,13 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
         return (
           <div key={rowIdx} className="hlc-daterow">
             {dateRow.map((date) => {
-              const currentDayjs = date;
-              const day = currentDayjs.day();
-              const cls = classnames('hlc-dateitem', {
-                'not-current-month':
-                  currentDayjs.isBefore(dayjsMonthStart) ||
-                  currentDayjs.isAfter(dayjsMonthEnd), // 不是当月
-                'current-date': currentDayjs.isSame(dayjs(), 'day'), // 今天
-                weekend: day === 0 || day === 6, // 周末
-              });
               return (
-                <div key={date.format()} className={cls}>
-                  <span className="date-text">{date.format('D')}</span>
-                </div>
+                <DateCell
+                  key={date.format()}
+                  date={date}
+                  dayjsMonthEnd={dayjsMonthEnd}
+                  dayjsMonthStart={dayjsMonthStart}
+                />
               );
             })}
           </div>

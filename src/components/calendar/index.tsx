@@ -6,14 +6,21 @@ import Daypanel from '../daypanel';
 
 import './index.less';
 
+export interface IEventItem {
+  timeRange: [string, string] | string;
+  title?: string;
+}
+
 interface ICalendar {
   defaultCurrentDate?: Dayjs;
   currentDate?: Dayjs;
   onChange?: (val: Dayjs) => void;
+  eventList?: IEventItem[];
 }
 
 const Calendar: React.FC<ICalendar> = (props) => {
-  const { defaultCurrentDate, currentDate, onChange } = props;
+  const { defaultCurrentDate, currentDate, onChange, eventList } = props;
+  console.log(eventList);
 
   const [nowDate, setNowDate] = useState<Dayjs>(dayjs());
 

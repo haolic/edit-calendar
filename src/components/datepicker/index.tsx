@@ -25,11 +25,11 @@ const Datepicker: React.FC<IDatepicker> = (props) => {
   return (
     <div className="hlc-datepicker-wrap">
       <div onClick={subtract} className="hlc-calendar-datepicker-btn">
-        <i className="hlc-calendar hlc-calendar-icon-left"></i>
+        <i className="hlc-calendar-icon hlc-calendar-iconicon-left"></i>
       </div>
       <div>{value.format('YYYY 年 MM 月')}</div>
       <div onClick={addDate} className="hlc-calendar-datepicker-btn">
-        <i className="hlc-calendar hlc-calendar-icon-right"></i>
+        <i className="hlc-calendar-icon hlc-calendar-iconicon-right"></i>
       </div>
       <div className="hlc-to-today">
         <span className="hlc-to-today-text" role="button" onClick={goToday}>
