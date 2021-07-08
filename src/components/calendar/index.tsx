@@ -9,6 +9,8 @@ import './index.less';
 export interface IEventItem {
   timeRange: [string, string] | string;
   title?: string;
+  isEventFirstDay: boolean;
+  isEventLastDay: boolean;
 }
 
 interface ICalendar {
@@ -20,7 +22,6 @@ interface ICalendar {
 
 const Calendar: React.FC<ICalendar> = (props) => {
   const { defaultCurrentDate, currentDate, onChange, eventList } = props;
-  console.log(eventList);
 
   const [nowDate, setNowDate] = useState<Dayjs>(dayjs());
 
@@ -38,7 +39,7 @@ const Calendar: React.FC<ICalendar> = (props) => {
     <div className="hlc-calendar">
       <Datepicker value={nowDate} onChange={changeDate} />
       <Daypanel />
-      <Datepanel value={nowDate} />
+      <Datepanel value={nowDate} eventList={eventList || []} />
     </div>
   );
 };
