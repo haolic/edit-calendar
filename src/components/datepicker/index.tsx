@@ -1,21 +1,21 @@
 import React from 'react';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 
 import './index.less';
 
 interface IDatepicker {
-  value: dayjs.Dayjs;
-  onChange: (val: dayjs.Dayjs) => void;
+  value: Dayjs;
+  onChange: (val: Dayjs) => void;
 }
 
 const Datepicker: React.FC<IDatepicker> = (props) => {
   const { value, onChange } = props;
 
   const addDate = () => {
-    onChange(dayjs(value).add(1, 'month'));
+    onChange(value.add(1, 'month'));
   };
   const subtract = () => {
-    onChange(dayjs(value).subtract(1, 'month'));
+    onChange(value.subtract(1, 'month'));
   };
 
   const goToday = () => {

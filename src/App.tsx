@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import Calendar from './index';
 
 const App = () => {
   const [date, setDate] = useState(dayjs());
 
-  const changeDate = (newDate: dayjs.Dayjs) => {
+  const changeDate = (newDate: Dayjs) => {
     setDate(newDate);
   };
   return (

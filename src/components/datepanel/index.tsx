@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import _ from 'lodash';
 import classnames from 'classnames';
 
 import './index.less';
 
 interface IDatepanel {
-  value: dayjs.Dayjs;
+  value: Dayjs;
 }
 
 const Datepanel: React.FC<IDatepanel> = (props) => {
@@ -14,7 +14,7 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
   const dayjsMonthStart = value.startOf('month');
   const dayjsMonthEnd = value.endOf('month');
 
-  const [allDate, setAllDate] = useState<dayjs.Dayjs[][]>([]);
+  const [allDate, setAllDate] = useState<Dayjs[][]>([]);
 
   useEffect(() => {
     const startDate = value.startOf('month').startOf('week');
