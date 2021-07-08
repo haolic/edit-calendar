@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Dayjs } from 'dayjs';
-import _ from 'lodash';
+import chunk from 'lodash/chunk';
 import DateCell from '../date-cell';
 
 import './index.less';
@@ -31,7 +31,7 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
       arr.push(i);
     }
 
-    setAllDate(_.chunk(arr, 7));
+    setAllDate(chunk(arr, 7));
   }, [value]);
 
   return (
