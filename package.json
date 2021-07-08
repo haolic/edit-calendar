@@ -1,8 +1,18 @@
 {
   "name": "edit-calendar",
-  "version": "1.0.2",
+  "version": "1.0.0",
+  "files": [
+    "dist"
+  ],
   "description": "edit-calendar",
-  "main": "index.js",
+  "main": "./dist/my-lib.umd.js",
+  "module": "./dist/my-lib.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/my-lib.es.js",
+      "require": "./dist/my-lib.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite --port=9999 --host",
     "start": "vite --port=9999 --host",
