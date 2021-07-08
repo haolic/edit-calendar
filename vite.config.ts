@@ -8,4 +8,11 @@ export default defineConfig({
   resolve: {
     alias: { '@': path.resolve(__dirname, 'src') },
   },
+  build: {
+    target: 'esnext',
+    lib: {
+      entry: 'src/index.ts',
+      name: 'edit-calendar',
+    },
+  },
 });
