@@ -1,4 +1,4 @@
-import { DateCellItem } from '@/components/datepanel';
+import { DateCellItem } from '@/components/types';
 import { IEventItem } from '@/components/types';
 import dayjs, { Dayjs } from 'dayjs';
 
