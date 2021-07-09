@@ -1,21 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import dayjs, { Dayjs } from 'dayjs';
 import chunk from 'lodash/chunk';
 import DateCell from '../date-cell';
 
 import './index.less';
-import { IEventItem } from '@/components/types';
+import { IDatepanel, DateCellItem } from '@/components/types';
 import dateInfoGen from '@/utils/dateInfoGen';
-
-interface IDatepanel {
-  value: Dayjs;
-  eventList: IEventItem[];
-}
-
-export interface DateCellItem {
-  date: Dayjs;
-  eventList: IEventItem[];
-}
 
 const Datepanel: React.FC<IDatepanel> = (props) => {
   const { value, eventList } = props;

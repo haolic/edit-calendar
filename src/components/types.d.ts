@@ -1,6 +1,6 @@
 import { Dayjs } from 'dayjs';
 
-export interface IEventItem {
+interface IEventItem {
   timeRange: [string, string] | string;
   title?: string;
   isEventFirstDay?: boolean;
@@ -8,9 +8,32 @@ export interface IEventItem {
   [key: string]: any;
 }
 
-export interface ICalendar {
+interface ICalendar {
   defaultCurrentDate?: Dayjs;
   currentDate?: Dayjs;
   onChange?: (val: Dayjs) => void;
   eventList?: IEventItem[];
+}
+
+interface IDateCell {
+  date: Dayjs;
+  events: IEventItem[];
+  dayjsMonthStart: Dayjs;
+  dayjsMonthEnd: Dayjs;
+}
+
+interface IDatepanel {
+  value: Dayjs;
+  eventList: IEventItem[];
+}
+
+interface DateCellItem {
+  date: Dayjs;
+  eventList: IEventItem[];
+}
+
+
+interface IDatepicker {
+  value: Dayjs;
+  onChange: (val: Dayjs) => void;
 }

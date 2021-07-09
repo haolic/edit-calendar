@@ -1,17 +1,10 @@
 import React from 'react';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import classnames from 'classnames';
-import { IEventItem } from '@/components/types';
+import { IDateCell } from '@/components/types';
 import computedWidth from '@/utils/computedWidth';
 
 import './index.less';
-
-interface IDateCell {
-  date: Dayjs;
-  events: IEventItem[];
-  dayjsMonthStart: Dayjs;
-  dayjsMonthEnd: Dayjs;
-}
 
 const DateCell: React.FC<IDateCell> = (props) => {
   const { date, events, dayjsMonthStart, dayjsMonthEnd } = props;
