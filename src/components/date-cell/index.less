@@ -13,7 +13,6 @@
   border-left: @border;
   border-top: @border;
   transition: background 0.25s;
-  padding: 8px;
   position: relative;
   width: 0px;
   &:last-child {
@@ -79,7 +78,8 @@
   text-overflow: ellipsis;
 }
 
-.hlc-event-start {
+.hlc-event-first-day,
+.hlc-event-week-first-day {
   background-color: var(--purple-2);
   border-radius: 2px;
   position: relative;
@@ -93,5 +93,32 @@
     width: 2px;
     margin: 0 4px;
     background-color: var(--main-color);
+  }
+  &.hlc-event-last-day {
+    width: 100%;
+  }
+  &.hlc-event-need-break {
+    border-bottom-right-radius: 0;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      right: 0px;
+      border: 2px solid var(--purple-4);
+      border-bottom-color: transparent;
+      border-right-color: transparent;
+    }
+  }
+  &.hlc-event-need-prev {
+    border-top-left-radius: 0;
+    &::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 0px;
+      border: 2px solid var(--purple-4);
+      border-left-color: transparent;
+      border-top-color: transparent;
+    }
   }
 }

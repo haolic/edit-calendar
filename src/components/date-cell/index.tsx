@@ -3,7 +3,8 @@ import dayjs from 'dayjs';
 import classnames from 'classnames';
 import isoWeek from 'dayjs/plugin/isoWeek';
 import { IDateCell } from '@/components/types';
-import computedWidth from '@/utils/computedWidth';
+import computedStyle from '@/utils/computedStyle';
+import { CELL_PADDING } from '@/config/constant';
 
 import './index.less';
 
@@ -18,19 +19,33 @@ const DateCell: React.FC<IDateCell> = (props) => {
     'current-date': date.isSame(dayjs(), 'day'), // 今天
     weekend: day === 0 || day === 6 || day === 7, // 周末
   });
+
   return (
-    <div key={date.format()} className={cls}>
+    <div key={date.format()} className={cls} style={{ padding: CELL_PADDING }}>
       <span className="date-text">{date.format('D')}</span>
-      {events.map((el, idx) => {
-        const { isEventFirstDay } = el;
-        const cls = classnames('hlc-event', {
-          'hlc-event-start': isEventFirstDay,
+      {events.map((eventItem, idx) => {
+        const { isEventFirstDay, title } = eventItem;
+
+        const eventInWeekFirstDay = day === date.startOf('week').day();
+
+        const showThisEventBox = isEventFirstDay || eventInWeekFirstDay;
+        let style = undefined;
+        let extraClassName = undefined;
+        if (showThisEventBox) {
+          const computedStyleObj = computedStyle(eventItem, date);
+          style = computedStyleObj.style;
+          extraClassName = computedStyleObj.classname;
+        }
+        const cls = classnames('hlc-event', extraClassName, {
+          'hlc-event-first-day': isEventFirstDay,
+          'hlc-event-week-first-day': eventInWeekFirstDay,
         });
-        const width = computedWidth(el);
+
         return (
-          <div key={idx} className={cls} style={{ width }}>
-            {isEventFirstDay && (
-              <div className="hlc-event-text">{el.title || '未命名'}</div>
+          <div key={idx} className={cls} style={style}>
+            {/* 事件起始日期或不是起始日期，但是在每周第一天里需要显示title */}
+            {showThisEventBox && (
+              <div className="hlc-event-text">{title || '未命名事件'}</div>
             )}
           </div>
         );

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import chunk from 'lodash/chunk';
+import dayjs from 'dayjs';
 import DateCell from '../date-cell';
 import { IDatepanel, DateCellItem } from '@/components/types';
 import dateInfoGen from '@/utils/dateInfoGen';
@@ -15,8 +16,23 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
   useEffect(() => {
     const startDate = value.startOf('month').startOf('week');
     const endDate = startDate.add(42, 'days');
-
-    const arr = dateInfoGen(startDate, endDate, eventList);
+    const sortedEventList = eventList.sort((a, b) => {
+      console.log(a, b);
+      let _a = a.timeRange;
+      let _b = b.timeRange;
+      if (Array.isArray(a.timeRange)) {
+        _a = a.timeRange[0];
+      }
+      if (Array.isArray(b.timeRange)) {
+        _b = b.timeRange[0];
+      }
+      if (dayjs(_a as string).isAfter(dayjs(_b as string))) {
+        return 0;
+      } else {
+        return -1;
+      }
+    });
+    const arr = dateInfoGen(startDate, endDate, sortedEventList);
     setAllDate(chunk(arr, 7));
   }, [value, eventList, firstDayOfWeek]);
 
