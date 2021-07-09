@@ -1,10 +1,13 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import classnames from 'classnames';
+import isoWeek from 'dayjs/plugin/isoWeek';
 import { IDateCell } from '@/components/types';
 import computedWidth from '@/utils/computedWidth';
 
 import './index.less';
+
+dayjs.extend(isoWeek);
 
 const DateCell: React.FC<IDateCell> = (props) => {
   const { date, events, dayjsMonthStart, dayjsMonthEnd } = props;
@@ -13,7 +16,7 @@ const DateCell: React.FC<IDateCell> = (props) => {
     'not-current-month':
       date.isBefore(dayjsMonthStart) || date.isAfter(dayjsMonthEnd), // 不是当月
     'current-date': date.isSame(dayjs(), 'day'), // 今天
-    weekend: day === 0 || day === 6, // 周末
+    weekend: day === 0 || day === 6 || day === 7, // 周末
   });
   return (
     <div key={date.format()} className={cls}>

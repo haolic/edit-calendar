@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
+import 'dayjs/locale/zh';
+import 'dayjs/locale/en';
 import Calendar, { EventList } from './index';
+
+dayjs.locale('zh');
 
 const App = () => {
   const [date, setDate] = useState(dayjs());
@@ -34,6 +38,7 @@ const App = () => {
   const changeDate = (newDate: Dayjs) => {
     setDate(newDate);
   };
+
   return (
     <div>
       <Calendar

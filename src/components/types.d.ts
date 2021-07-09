@@ -25,6 +25,7 @@ interface IDateCell {
 interface IDatepanel {
   value: Dayjs;
   eventList: IEventItem[];
+  firstDayOfWeek: 1 | 7;
 }
 
 interface DateCellItem {
@@ -32,8 +33,11 @@ interface DateCellItem {
   eventList: IEventItem[];
 }
 
-
 interface IDatepicker {
   value: Dayjs;
   onChange: (val: Dayjs) => void;
+}
+
+interface IDayPanel {
+  firstDayOfWeek: 1 | 7;
 }
