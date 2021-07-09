@@ -3,12 +3,21 @@ import { IEventItem } from '@/components/types';
 import dayjs, { Dayjs } from 'dayjs';
 import { CELL_PADDING } from '@/config/constant';
 
+interface StyleObj {
+  style: React.CSSProperties;
+  classname: {
+    [key: string]: boolean;
+  };
+}
+
 const computedStyle = (
   cell: IEventItem,
   date: Dayjs
 ): {
   style?: React.CSSProperties;
-  classname?: string;
+  classname: {
+    [key: string]: boolean;
+  };
 } => {
   const { timeRange } = cell;
   if (Array.isArray(timeRange)) {
@@ -17,7 +26,9 @@ const computedStyle = (
     const thisWeek = date.endOf('week');
     const endDayjs = dayjs(end);
     const startDayjs = dayjs(start);
-    let classnameStr = '';
+    let classnameObj: {
+      [key: string]: boolean;
+    } = {};
     if (endDayjs.isAfter(thisWeek)) {
       // 事件条需要换行，本行事件长度需要填充满本周最后一天。
       const throughNum = thisWeek.diff(date, 'days');
@@ -32,24 +43,25 @@ const computedStyle = (
       let widthStr = `calc(${throughNum + 1}00% + ${
         CELL_PADDING * (2 * throughNum + 1) + throughNum + 5
       }px)`;
-      classnameStr = 'hlc-event-need-break';
+      classnameObj['hlc-event-need-break'] = true;
 
-      const styleObj: { style: React.CSSProperties; classname: string } = {
+      const styleObj: StyleObj = {
         style: {
           width: widthStr,
           backgroundColor: cell.color,
         },
-        classname: classnameStr,
+        classname: classnameObj,
       };
       if (startDayjs.isBefore(date)) {
+        console.log(startDayjs.isBefore(date), date.format('DD'));
         // 需要折行且需要承接上一行
-        classnameStr += ' hlc-event-need-prev';
+        classnameObj['hlc-event-need-prev'] = true;
 
         widthStr = `calc(${throughNum + 1}00% + ${
           CELL_PADDING * (2 * (throughNum + 1)) + throughNum + 10
         }px)`;
 
-        styleObj.classname = classnameStr;
+        styleObj.classname = classnameObj;
         styleObj.style.width = widthStr;
         styleObj.style.transform = 'translateX(-13px)';
       }
@@ -60,22 +72,30 @@ const computedStyle = (
 
       // 计算逻辑一部分同上，最后加offset为需要往前移动5（折角需要5px） + CELL_PADDING像素充满第一个格，(2 * throughNum)不需要加1是因为不需要加最后一个padding。
       const offset = 5 + CELL_PADDING;
-      const widthStr = `calc(${throughNum + 1}00% + ${
-        CELL_PADDING * (2 * throughNum) + throughNum + offset
+      let widthStr = `calc(${throughNum + 1}00% + ${
+        CELL_PADDING * (2 * throughNum) + throughNum
       }px)`;
-      return {
+      const styleObj: StyleObj = {
         style: {
           width: widthStr,
-          transform: `translateX(-${offset}px)`,
           backgroundColor: cell.color,
         },
-        classname: 'hlc-event-need-prev',
+        classname: {},
       };
+      if (startDayjs.isBefore(date)) {
+        widthStr = `calc(${throughNum + 1}00% + ${
+          CELL_PADDING * (2 * throughNum) + throughNum + offset
+        }px)`;
+        styleObj.style.width = widthStr;
+        styleObj.style.transform = `translateX(-${offset}px)`;
+        styleObj.classname['hlc-event-need-prev'] = true;
+      }
+      return styleObj;
     }
   } else {
     return {
       style: { width: 'calc(100%)', backgroundColor: cell.color },
-      classname: '',
+      classname: {},
     };
   }
 };

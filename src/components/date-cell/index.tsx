@@ -30,7 +30,9 @@ const DateCell: React.FC<IDateCell> = (props) => {
 
         const showThisEventBox = isEventFirstDay || eventInWeekFirstDay;
         let style = undefined;
-        let extraClassName = undefined;
+        let extraClassName: {
+          [key: string]: boolean;
+        } = {};
         if (showThisEventBox) {
           const computedStyleObj = computedStyle(eventItem, date);
           style = computedStyleObj.style;
@@ -44,6 +46,9 @@ const DateCell: React.FC<IDateCell> = (props) => {
         return (
           <div key={idx} className={cls} style={style}>
             {/* 事件起始日期或不是起始日期，但是在每周第一天里需要显示title */}
+            {extraClassName['hlc-event-need-prev'] && (
+              <div className="hlc-event-need-prev-block"></div>
+            )}
             {showThisEventBox && (
               <div className="hlc-event-text">{title || '未命名事件'}</div>
             )}
