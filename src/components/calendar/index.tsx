@@ -3,16 +3,9 @@ import dayjs, { Dayjs } from 'dayjs';
 import Datepicker from '../datepicker';
 import Datepanel from '../datepanel';
 import Daypanel from '../daypanel';
-import { IEventItem } from '@/types';
+import { ICalendar } from '@/components/types';
 
 import './index.less';
-
-interface ICalendar {
-  defaultCurrentDate?: Dayjs;
-  currentDate?: Dayjs;
-  onChange?: (val: Dayjs) => void;
-  eventList?: IEventItem[];
-}
 
 const Calendar: React.FC<ICalendar> = (props) => {
   const { defaultCurrentDate, currentDate, onChange, eventList } = props;

@@ -4,7 +4,7 @@ import chunk from 'lodash/chunk';
 import DateCell from '../date-cell';
 
 import './index.less';
-import { IEventItem } from '@/types';
+import { IEventItem } from '@/components/types';
 import dateInfoGen from '@/utils/dateInfoGen';
 
 interface IDatepanel {

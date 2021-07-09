@@ -1,5 +1,5 @@
 import { DateCellItem } from '@/components/datepanel';
-import { IEventItem } from '@/types';
+import { IEventItem } from '@/components/types';
 import dayjs, { Dayjs } from 'dayjs';
 
 const dateInfoGen = (

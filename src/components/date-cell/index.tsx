@@ -1,7 +1,7 @@
 import React from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import classnames from 'classnames';
-import { IEventItem } from '@/types';
+import { IEventItem } from '@/components/types';
 import computedWidth from '@/utils/computedWidth';
 
 import './index.less';
