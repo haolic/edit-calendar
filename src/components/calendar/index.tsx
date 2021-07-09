@@ -3,16 +3,9 @@ import dayjs, { Dayjs } from 'dayjs';
 import Datepicker from '../datepicker';
 import Datepanel from '../datepanel';
 import Daypanel from '../daypanel';
+import { IEventItem } from '@/types';
 
 import './index.less';
-
-export interface IEventItem {
-  timeRange: [string, string] | string;
-  title?: string;
-  isEventFirstDay?: boolean;
-  isEventLastDay?: boolean;
-  [key: string]: any;
-}
 
 interface ICalendar {
   defaultCurrentDate?: Dayjs;

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
-import Calendar, { IEventItem } from './index';
+import Calendar, { EventList } from './index';
 
 const App = () => {
   const [date, setDate] = useState(dayjs());
 
-  const eventList: IEventItem[] = [
+  const eventList: EventList = [
     {
       timeRange: [
         dayjs().format('YYYY-MM-DD'),

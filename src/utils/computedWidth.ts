@@ -1,4 +1,4 @@
-import { IEventItem } from '@/components/calendar';
+import { IEventItem } from '@/types';
 
 const computedWidth = (cell: IEventItem) => {
   console.log(cell);
