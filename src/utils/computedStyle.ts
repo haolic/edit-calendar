@@ -48,12 +48,12 @@ const computedStyle = (
       const styleObj: StyleObj = {
         style: {
           width: widthStr,
-          backgroundColor: cell.color,
+          backgroundColor: cell.color.backgroundColor,
+          color: cell.color.lineColor,
         },
         classname: classnameObj,
       };
       if (startDayjs.isBefore(date)) {
-        console.log(startDayjs.isBefore(date), date.format('DD'));
         // 需要折行且需要承接上一行
         classnameObj['hlc-event-need-prev'] = true;
 
@@ -78,7 +78,8 @@ const computedStyle = (
       const styleObj: StyleObj = {
         style: {
           width: widthStr,
-          backgroundColor: cell.color,
+          backgroundColor: cell.color.backgroundColor,
+          color: cell.color.lineColor,
         },
         classname: {},
       };
@@ -94,7 +95,11 @@ const computedStyle = (
     }
   } else {
     return {
-      style: { width: 'calc(100%)', backgroundColor: cell.color },
+      style: {
+        width: 'calc(100%)',
+        backgroundColor: cell.color.backgroundColor,
+        color: cell.color.lineColor,
+      },
       classname: {},
     };
   }

@@ -1,6 +1,7 @@
 import { DateCellItem } from '@/components/types';
 import { IEventItem } from '@/components/types';
 import dayjs, { Dayjs } from 'dayjs';
+import colorList from '@/config/colorList';
 
 const dateInfoGen = (
   startDate: Dayjs,
@@ -18,8 +19,10 @@ const dateInfoGen = (
       date: i,
       eventList: [],
     };
-    eventList.forEach((event) => {
-      const { timeRange } = event;
+    eventList.forEach((ev, idx) => {
+      const { timeRange } = ev;
+      const color = colorList[idx % colorList.length];
+
       if (Array.isArray(timeRange)) {
         // 区间
         const [start, end] = timeRange;
@@ -31,7 +34,8 @@ const dateInfoGen = (
           endDayjs.isSame(i, 'day')
         ) {
           item.eventList.push({
-            ...event,
+            ...ev,
+            color,
             isEventFirstDay: startDayjs.isSame(i, 'day'),
             isEventLastDay: endDayjs.isSame(i, 'day'),
           });
@@ -40,7 +44,8 @@ const dateInfoGen = (
         // 单日期
         if (dayjs(timeRange).isSame(i)) {
           item.eventList.push({
-            ...event,
+            ...ev,
+            color,
             isEventFirstDay: true,
             isEventLastDay: true,
           });

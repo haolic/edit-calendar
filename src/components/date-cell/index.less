@@ -76,6 +76,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #333;
 }
 
 .hlc-event-first-day,
@@ -87,8 +88,7 @@
   align-items: center;
   color: #333;
   z-index: 99;
-  &::before {
-    content: '';
+  .hlc-event-start-line {
     height: 14px;
     width: 2px;
     margin: 0 4px;
@@ -99,15 +99,6 @@
   }
   &.hlc-event-need-break {
     border-bottom-right-radius: 0;
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      right: 0px;
-      border: 2px solid var(--purple-4);
-      border-bottom-color: transparent;
-      border-right-color: transparent;
-    }
   }
   &.hlc-event-need-prev {
     border-top-left-radius: 0;
