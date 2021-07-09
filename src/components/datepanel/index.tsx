@@ -17,7 +17,6 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
     const startDate = value.startOf('month').startOf('week');
     const endDate = startDate.add(42, 'days');
     const sortedEventList = eventList.sort((a, b) => {
-      console.log(a, b);
       let _a = a.timeRange;
       let _b = b.timeRange;
       if (Array.isArray(a.timeRange)) {

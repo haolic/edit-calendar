@@ -43,7 +43,6 @@ const computedStyle = (
       };
       if (startDayjs.isBefore(date)) {
         // 需要折行且需要承接上一行
-        console.log(throughNum)
         classnameStr += ' hlc-event-need-prev';
 
         widthStr = `calc(${throughNum + 1}00% + ${
