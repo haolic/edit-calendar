@@ -1,9 +1,10 @@
 import React from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import classnames from 'classnames';
+import { IEventItem } from '../calendar';
+import computedWidth from '@/utils/computedWidth';
 
 import './index.less';
-import { IEventItem } from '../calendar';
 
 interface IDateCell {
   date: Dayjs;
@@ -14,7 +15,6 @@ interface IDateCell {
 
 const DateCell: React.FC<IDateCell> = (props) => {
   const { date, events, dayjsMonthStart, dayjsMonthEnd } = props;
-  console.log(date.format('YYYY-MM-DD'), events);
   const day = date.day();
   const cls = classnames('hlc-dateitem', {
     'not-current-month':
@@ -30,9 +30,12 @@ const DateCell: React.FC<IDateCell> = (props) => {
         const cls = classnames('hlc-event', {
           'hlc-event-start': isEventFirstDay,
         });
+        const width = computedWidth(el);
         return (
-          <div key={idx} className={cls} style={{width: 'calc(200% + 16px)'}}>
-            {isEventFirstDay && <div className="hlc-event-text">{el.title || '未命名'}</div>}
+          <div key={idx} className={cls} style={{ width }}>
+            {isEventFirstDay && (
+              <div className="hlc-event-text">{el.title || '未命名'}</div>
+            )}
           </div>
         );
       })}

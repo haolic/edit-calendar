@@ -36,6 +36,8 @@
     "vite": "^2.4.0"
   },
   "keywords": [
+    "event",
+    "events",
     "edit",
     "calendar"
   ],
