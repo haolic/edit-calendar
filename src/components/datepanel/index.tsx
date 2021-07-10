@@ -2,20 +2,23 @@ import React, { useEffect, useState } from 'react';
 import chunk from 'lodash/chunk';
 import dayjs from 'dayjs';
 import DateCell from '../date-cell';
-import { IDatepanel, DateCellItem } from '@/components/types';
+import {
+  IDatepanel,
+  DateCellItem,
+  IEventItem,
+  DropResult,
+} from '@/components/types';
 import dateInfoGen from '@/utils/dateInfoGen';
 import './index.less';
+import { time } from 'console';
 
 const Datepanel: React.FC<IDatepanel> = (props) => {
   const { value, eventList, firstDayOfWeek } = props;
   const dayjsMonthStart = value.startOf('month');
   const dayjsMonthEnd = value.endOf('month');
-
-  const [allDate, setAllDate] = useState<DateCellItem[][]>([]);
+  const [eventListState, setEventListState] = useState(eventList);
 
   useEffect(() => {
-    const startDate = value.startOf('month').startOf('week');
-    const endDate = startDate.add(42, 'days');
     const sortedEventList = eventList.sort((a, b) => {
       let _a = a.timeRange;
       let _b = b.timeRange;
@@ -31,9 +34,40 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
         return -1;
       }
     });
-    const arr = dateInfoGen(startDate, endDate, sortedEventList);
+    setEventListState(
+      sortedEventList.map((el, idx) => {
+        return {
+          ...el,
+          eventIndex: idx,
+        };
+      })
+    );
+  }, [eventList]);
+
+  const [allDate, setAllDate] = useState<DateCellItem[][]>([]);
+
+  useEffect(() => {
+    const startDate = value.startOf('month').startOf('week');
+    const endDate = startDate.add(42, 'days');
+
+    const arr = dateInfoGen(startDate, endDate, eventListState);
     setAllDate(chunk(arr, 7));
-  }, [value, eventList, firstDayOfWeek]);
+  }, [value, eventListState, firstDayOfWeek]);
+
+  const onEventDrop = (item: IEventItem, cell: DropResult | null) => {
+    if (!cell) {
+      return;
+    }
+    const newList = [...eventListState];
+    const currentDropEvent = newList[item.eventIndex as number];
+    const { timeRange } = currentDropEvent;
+    if (Array.isArray(timeRange)) {
+      // 数组，日期起始结束都需要变
+    } else {
+      currentDropEvent.timeRange = cell.date.format();
+    }
+    setEventListState(newList);
+  };
 
   return (
     <div className="hlc-datepanel">
@@ -49,6 +83,7 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
                   events={eventList || []}
                   dayjsMonthEnd={dayjsMonthEnd}
                   dayjsMonthStart={dayjsMonthStart}
+                  onEventDrop={onEventDrop}
                 />
               );
             })}

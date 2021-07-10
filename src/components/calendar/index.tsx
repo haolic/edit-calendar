@@ -8,6 +8,9 @@ import Datepanel from '../datepanel';
 import Daypanel from '../daypanel';
 import { ICalendar } from '@/components/types';
 
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+
 import './index.less';
 
 const Calendar: React.FC<ICalendar> = (props) => {
@@ -45,11 +48,13 @@ const Calendar: React.FC<ICalendar> = (props) => {
     <div className="hlc-calendar">
       <Datepicker value={nowDate} onChange={changeDate} />
       <Daypanel firstDayOfWeek={firstDayOfWeek} />
-      <Datepanel
-        value={nowDate}
-        eventList={eventList || []}
-        firstDayOfWeek={firstDayOfWeek}
-      />
+      <DndProvider backend={HTML5Backend}>
+        <Datepanel
+          value={nowDate}
+          eventList={eventList || []}
+          firstDayOfWeek={firstDayOfWeek}
+        />
+      </DndProvider>
     </div>
   );
 };

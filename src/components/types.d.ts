@@ -5,6 +5,7 @@ interface IEventItem {
   title?: string;
   isEventFirstDay?: boolean;
   isEventLastDay?: boolean;
+  eventIndex?: number;
   [key: string]: any;
 }
 
@@ -20,6 +21,7 @@ interface IDateCell {
   events: IEventItem[];
   dayjsMonthStart: Dayjs;
   dayjsMonthEnd: Dayjs;
+  onEventDrop: IEventLine['onEventDrop'];
 }
 
 interface IDatepanel {
@@ -40,4 +42,14 @@ interface IDatepicker {
 
 interface IDayPanel {
   firstDayOfWeek: 1 | 7;
+}
+interface DropResult {
+  date: Dayjs;
+  dropEffect: string;
+}
+
+interface IEventLine {
+  eventItem: IEventItem;
+  date: Dayjs;
+  onEventDrop: (eventItem: IEventItem, dropResult: DropResult | null) => void;
 }
