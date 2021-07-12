@@ -1,9 +1,6 @@
 {
   "name": "edit-calendar",
-  "version": "1.0.4",
-  "files": [
-    "dist"
-  ],
+  "version": "1.0.5",
   "description": "edit-calendar",
   "main": "./dist/edit-calendar.umd.js",
   "module": "./dist/edit-calendar.es.js",
