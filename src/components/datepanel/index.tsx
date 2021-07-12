@@ -10,7 +10,6 @@ import {
 } from '@/components/types';
 import dateInfoGen from '@/utils/dateInfoGen';
 import './index.less';
-import { time } from 'console';
 
 const Datepanel: React.FC<IDatepanel> = (props) => {
   const { value, eventList, firstDayOfWeek } = props;
@@ -63,6 +62,11 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
     const { timeRange } = currentDropEvent;
     if (Array.isArray(timeRange)) {
       // 数组，日期起始结束都需要变
+      const offsetDate = cell.date.diff(dayjs(item.timeRange[0]), 'days');
+      currentDropEvent.timeRange = [
+        dayjs(item.timeRange[0]).add(offsetDate, 'days').format(),
+        dayjs(item.timeRange[1]).add(offsetDate, 'days').format(),
+      ];
     } else {
       currentDropEvent.timeRange = cell.date.format();
     }
