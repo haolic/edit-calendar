@@ -2,12 +2,10 @@
   "name": "edit-calendar",
   "version": "1.0.5",
   "description": "edit-calendar",
-  "main": "./dist/edit-calendar.umd.js",
-  "module": "./dist/edit-calendar.es.js",
+  "module": "./src/index.ts",
   "exports": {
     ".": {
-      "import": "./dist/edit-calendar.es.js",
-      "require": "./dist/edit-calendar.umd.js"
+      "import": "./src/index.ts"
     }
   },
   "scripts": {
