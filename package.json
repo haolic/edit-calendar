@@ -1,13 +1,7 @@
 {
   "name": "edit-calendar",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "edit-calendar",
-  "module": "./src/index.ts",
-  "exports": {
-    ".": {
-      "import": "./src/index.ts"
-    }
-  },
   "scripts": {
     "dev": "vite --port=9999 --host",
     "start": "vite --port=9999 --host",

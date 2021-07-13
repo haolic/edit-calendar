@@ -12,12 +12,13 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": false,
-    "noEmit": true,
+    "noEmit": false,
+    "declaration": true,
     "jsx": "react",
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
     }
   },
-  "include": ["./src"],
+  "include": ["./src"]
 }
