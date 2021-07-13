@@ -1,7 +1,7 @@
 import React from 'react';
 import dayjs from 'dayjs';
 
-import { IDatepicker } from '@/components/types';
+import { IDatepicker } from '../types';
 
 import './index.less';
 

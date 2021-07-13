@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
-import computedStyle from '@/utils/computedStyle';
-import { IEventLine, DropResult } from '@/components/types';
+import computedStyle from '../../utils/computedStyle';
+import { IEventLine, DropResult } from '../types';
 import { useDrag } from 'react-dnd';
 
 import './index.less';

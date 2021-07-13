@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import computedStyle from '@/utils/computedStyle';
+import computedStyle from '../../utils/computedStyle';
 import { useDrag } from 'react-dnd';
 import './index.less';
 const EventLine = (props) => {

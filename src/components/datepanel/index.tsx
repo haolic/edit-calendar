@@ -7,8 +7,8 @@ import {
   DateCellItem,
   IEventItem,
   DropResult,
-} from '@/components/types';
-import dateInfoGen from '@/utils/dateInfoGen';
+} from '../types';
+import dateInfoGen from '../../utils/dateInfoGen';
 import './index.less';
 
 const Datepanel: React.FC<IDatepanel> = (props) => {

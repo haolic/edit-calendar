@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import colorList from '@/config/colorList';
+import colorList from '../config/colorList';
 const dateInfoGen = (startDate, endDate, eventList) => {
     const arr = [];
     for (let i = startDate; i.valueOf() < endDate.valueOf(); i = i.add(1, 'day')) {

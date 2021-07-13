@@ -1,7 +1,7 @@
-import { DateCellItem } from '@/components/types';
-import { IEventItem } from '@/components/types';
+import { DateCellItem } from '../components/types';
+import { IEventItem } from '../components/types';
 import dayjs, { Dayjs } from 'dayjs';
-import colorList from '@/config/colorList';
+import colorList from '../config/colorList';
 
 const dateInfoGen = (
   startDate: Dayjs,

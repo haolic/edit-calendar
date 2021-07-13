@@ -2,8 +2,8 @@ import React from 'react';
 import dayjs from 'dayjs';
 import classnames from 'classnames';
 import isoWeek from 'dayjs/plugin/isoWeek';
-import { IDateCell } from '@/components/types';
-import { CELL_PADDING } from '@/config/constant';
+import { IDateCell } from '../types';
+import { CELL_PADDING } from '../../config/constant';
 import { useDrop } from 'react-dnd';
 
 import './index.less';

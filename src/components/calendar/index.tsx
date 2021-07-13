@@ -6,7 +6,7 @@ import 'dayjs/locale/en';
 import Datepicker from '../datepicker';
 import Datepanel from '../datepanel';
 import Daypanel from '../daypanel';
-import { ICalendar } from '@/components/types';
+import { ICalendar } from '../types';
 
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';

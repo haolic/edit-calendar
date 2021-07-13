@@ -1,7 +1,7 @@
 import React from 'react';
-import { IEventItem } from '@/components/types';
+import { IEventItem } from '../components/types';
 import dayjs, { Dayjs } from 'dayjs';
-import { CELL_PADDING } from '@/config/constant';
+import { CELL_PADDING } from '../config/constant';
 
 interface StyleObj {
   style: React.CSSProperties;

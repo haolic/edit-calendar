@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { CELL_PADDING } from '@/config/constant';
+import { CELL_PADDING } from '../config/constant';
 const computedStyle = (cell, date) => {
     const { timeRange } = cell;
     if (Array.isArray(timeRange)) {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import chunk from 'lodash/chunk';
 import dayjs from 'dayjs';
 import DateCell from '../date-cell';
-import dateInfoGen from '@/utils/dateInfoGen';
+import dateInfoGen from '../../utils/dateInfoGen';
 import './index.less';
 const Datepanel = (props) => {
     const { value, eventList, firstDayOfWeek } = props;
