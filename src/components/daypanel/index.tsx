@@ -15,7 +15,7 @@ const Daypanel: React.FC<IDayPanel> = (props) => {
       {dayList.map((el) => {
         return (
           <div key={el} className="hlc-daypanel-item">
-            星期{el}
+            星期{el}{window.screen.availWidth} {window.screen.width} {window.devicePixelRatio}
           </div>
         );
       })}
