@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import classnames from 'classnames';
 import isoWeek from 'dayjs/plugin/isoWeek';
@@ -13,6 +13,7 @@ dayjs.extend(isoWeek);
 
 const DateCell: React.FC<IDateCell> = (props) => {
   const { date, events, dayjsMonthStart, dayjsMonthEnd, onEventDrop } = props;
+  const [isMouseOver, setIsMouseOver] = useState(false);
   const [, drop] = useDrop(() => ({
     accept: 'event',
     drop: () => ({ date }),
@@ -24,11 +25,19 @@ const DateCell: React.FC<IDateCell> = (props) => {
 
   const day = date.day();
 
+  const onMouseEnter = () => {
+    setIsMouseOver(true);
+  };
+  const onMouseLeave = () => {
+    setIsMouseOver(false);
+  };
+
   const cls = classnames('hlc-dateitem', {
     'not-current-month':
       date.isBefore(dayjsMonthStart) || date.isAfter(dayjsMonthEnd), // 不是当月
     'current-date': date.isSame(dayjs(), 'day'), // 今天
     weekend: day === 0 || day === 6 || day === 7, // 周末
+    'hlc-date-mouse-enter': isMouseOver,
   });
 
   return (
@@ -38,6 +47,8 @@ const DateCell: React.FC<IDateCell> = (props) => {
       role={'dateCell'}
       className={cls}
       style={{ padding: CELL_PADDING }}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <span className="date-text">{date.format('D')}</span>
       {events.map((eventItem, idx) => {
