@@ -38,7 +38,7 @@ const App = () => {
       title: '显卡。',
     },
     {
-      timeRange: dayjs().add(1, 'day').format('YYYY-MM-DD'),
+      timeRange: dayjs().add(2, 'day').format('YYYY-MM-DD'),
       title: '显卡。',
     },
     {

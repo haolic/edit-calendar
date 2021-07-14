@@ -2,12 +2,7 @@ import React, { useEffect, useState } from 'react';
 import chunk from 'lodash/chunk';
 import dayjs from 'dayjs';
 import DateCell from '../date-cell';
-import {
-  IDatepanel,
-  DateCellItem,
-  IEventItem,
-  DropResult,
-} from '../types';
+import { IDatepanel, DateCellItem, IEventItem, DropResult } from '../types';
 import dateInfoGen from '../../utils/dateInfoGen';
 import './index.less';
 
@@ -48,7 +43,6 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
   useEffect(() => {
     const startDate = value.startOf('month').startOf('week');
     const endDate = startDate.add(42, 'days');
-
     const arr = dateInfoGen(startDate, endDate, eventListState);
     setAllDate(chunk(arr, 7));
   }, [value, eventListState, firstDayOfWeek]);

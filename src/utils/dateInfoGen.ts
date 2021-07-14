@@ -9,6 +9,7 @@ const dateInfoGen = (
   eventList: IEventItem[]
 ) => {
   const arr: DateCellItem[] = [];
+  const reduceEventList = [...eventList];
 
   for (
     let i = startDate;
@@ -19,7 +20,7 @@ const dateInfoGen = (
       date: i,
       eventList: [],
     };
-    eventList.forEach((ev, idx) => {
+    reduceEventList.forEach((ev, idx) => {
       const { timeRange } = ev;
       const color = colorList[idx % colorList.length];
 
@@ -52,6 +53,20 @@ const dateInfoGen = (
         }
       }
     });
+
+    // console.log(item.eventList);
+    // if (item.eventList && item.eventList.length) {
+    //   item.eventList.reduce((a, b, i) => {
+    //     if (a && b && (b.eventIndex as number) - (a.eventIndex as number) > 1) {
+    //       const nextItem = item.eventList.splice(i, 1);
+    //       item.eventList.splice(i - 1, 0, nextItem[0]);
+    //       return nextItem[0];
+    //     }
+    //     return b;
+    //   });
+    // }
+
+    // console.log(item);
     arr.push(item);
   }
   return arr;
