@@ -5,6 +5,7 @@ import DateCell from '../date-cell';
 import { IDatepanel, DateCellItem, IEventItem, DropResult } from '../types';
 import dateInfoGen from '../../utils/dateInfoGen';
 import './index.less';
+import computedPosition from '../../utils/computedPosition';
 
 const Datepanel: React.FC<IDatepanel> = (props) => {
   const { value, eventList, firstDayOfWeek } = props;
@@ -70,6 +71,7 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
   return (
     <div className="hlc-datepanel">
       {allDate.map((dateRow, rowIdx) => {
+        const res = computedPosition(dateRow);
         return (
           <div key={rowIdx} className="hlc-daterow">
             {dateRow.map((item) => {

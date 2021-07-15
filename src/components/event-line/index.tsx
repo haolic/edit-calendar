@@ -44,7 +44,11 @@ const EventLine: React.FC<IEventLine> = (props) => {
   });
 
   return (
-    <div className={cls} style={style} ref={drag}>
+    <div
+      className={cls}
+      style={{ ...style, borderColor: style && style.color }}
+      ref={drag}
+    >
       {/* 事件起始日期或不是起始日期，但是在每周第一天里需要显示title */}
       <div
         className="hlc-event-start-line"
@@ -53,7 +57,9 @@ const EventLine: React.FC<IEventLine> = (props) => {
         }}
       ></div>
       {showThisEventBox && (
-        <div className="hlc-event-text">{title || '未命名事件'}</div>
+        <div className="hlc-event-text" title={title}>
+          {title || '未命名事件'}
+        </div>
       )}
     </div>
   );

@@ -2,6 +2,7 @@ import { DateCellItem } from '../components/types';
 import { IEventItem } from '../components/types';
 import dayjs, { Dayjs } from 'dayjs';
 import colorList from '../config/colorList';
+import { v4 as uuid } from 'uuid';
 
 const dateInfoGen = (
   startDate: Dayjs,
@@ -9,7 +10,12 @@ const dateInfoGen = (
   eventList: IEventItem[]
 ) => {
   const arr: DateCellItem[] = [];
-  const reduceEventList = [...eventList];
+  const reduceEventList = eventList.map((el) => {
+    return {
+      ...el,
+      id: uuid(),
+    };
+  });
 
   for (
     let i = startDate;
@@ -53,20 +59,6 @@ const dateInfoGen = (
         }
       }
     });
-
-    // console.log(item.eventList);
-    // if (item.eventList && item.eventList.length) {
-    //   item.eventList.reduce((a, b, i) => {
-    //     if (a && b && (b.eventIndex as number) - (a.eventIndex as number) > 1) {
-    //       const nextItem = item.eventList.splice(i, 1);
-    //       item.eventList.splice(i - 1, 0, nextItem[0]);
-    //       return nextItem[0];
-    //     }
-    //     return b;
-    //   });
-    // }
-
-    // console.log(item);
     arr.push(item);
   }
   return arr;

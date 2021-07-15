@@ -7,8 +7,10 @@
   align-items: center;
   color: #333;
   z-index: 99;
+  border-width: 1px;
+  border-style: solid;
   .hlc-event-start-line {
-    height: 14px;
+    height: 12px;
     width: 2px;
     margin: 0 4px;
     background-color: var(--main-color);
@@ -34,4 +36,23 @@
 
 .pointer-events-none {
   pointer-events: none;
+}
+
+.hlc-event {
+  text-align: left;
+  height: 24px;
+  line-height: 20px;
+  margin-top: 5px;
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+}
+.hlc-event-text {
+  flex: 1;
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #333;
 }

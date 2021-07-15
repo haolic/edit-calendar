@@ -30,7 +30,7 @@
     z-index: 9;
     pointer-events: none;
   }
-  &.hlc-date-mouse-enter {
+  &:hover {
     &::after {
       border: 1px solid var(--main-color);
     }
@@ -61,22 +61,4 @@
 
 .weekend {
   background-color: #f9f9f9;
-}
-
-.hlc-event {
-  text-align: left;
-  height: 20px;
-  line-height: 20px;
-  margin-top: 3px;
-  display: flex;
-  cursor: pointer;
-  user-select: none;
-}
-.hlc-event-text {
-  flex: 1;
-  word-break: keep-all;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: #333;
 }

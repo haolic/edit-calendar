@@ -6,6 +6,7 @@ interface IEventItem {
   isEventFirstDay?: boolean;
   isEventLastDay?: boolean;
   eventIndex?: number;
+  id?: string;
   [key: string]: any;
 }
 

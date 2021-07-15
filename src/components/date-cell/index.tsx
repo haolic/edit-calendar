@@ -13,7 +13,6 @@ dayjs.extend(isoWeek);
 
 const DateCell: React.FC<IDateCell> = (props) => {
   const { date, events, dayjsMonthStart, dayjsMonthEnd, onEventDrop } = props;
-  const [isMouseOver, setIsMouseOver] = useState(false);
   const [, drop] = useDrop(() => ({
     accept: 'event',
     drop: () => ({ date }),
@@ -25,21 +24,15 @@ const DateCell: React.FC<IDateCell> = (props) => {
 
   const day = date.day();
 
-  const onMouseEnter = () => {
-    setIsMouseOver(true);
-  };
-  const onMouseLeave = () => {
-    setIsMouseOver(false);
-  };
-
   const cls = classnames('hlc-dateitem', {
     'not-current-month':
       date.isBefore(dayjsMonthStart) || date.isAfter(dayjsMonthEnd), // 不是当月
     'current-date': date.isSame(dayjs(), 'day'), // 今天
     weekend: day === 0 || day === 6 || day === 7, // 周末
-    'hlc-date-mouse-enter': isMouseOver,
   });
-
+  const orderEvents = events.sort((a, b) => {
+    return a.position - b.position;
+  });
   return (
     <div
       key={date.format()}
@@ -47,11 +40,9 @@ const DateCell: React.FC<IDateCell> = (props) => {
       role={'dateCell'}
       className={cls}
       style={{ padding: CELL_PADDING }}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
     >
       <span className="date-text">{date.format('D')}</span>
-      {events.map((eventItem, idx) => {
+      {orderEvents.map((eventItem, idx) => {
         return (
           <EventLine
             key={idx}
