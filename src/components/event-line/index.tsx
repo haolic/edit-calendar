@@ -48,6 +48,8 @@ const EventLine: React.FC<IEventLine> = (props) => {
     'hlc-event-week-first-day': eventInWeekFirstDay,
   });
 
+  console.log(extraClassName);
+
   return draging ? (
     <div
       className="hlc-event"
@@ -73,6 +75,28 @@ const EventLine: React.FC<IEventLine> = (props) => {
           background: style && style.color,
         }}
       ></div>
+      {extraClassName['hlc-event-need-break'] && (
+        <div
+          className="hlc-event-need-break-block"
+          style={{
+            border: `2px solid ${style && style.color}`,
+            borderBottomColor: 'transparent',
+            borderRightColor: 'transparent',
+          }}
+        ></div>
+      )}
+
+      {extraClassName['hlc-event-need-prev'] && (
+        <div
+          className="hlc-event-need-prev-block"
+          style={{
+            border: `2px solid ${style && style.color}`,
+            borderTopColor: 'transparent',
+            borderLeftColor: 'transparent',
+          }}
+        ></div>
+      )}
+
       {showThisEventBox && (
         <div className="hlc-event-text" title={title}>
           <EventStatus timeRange={timeRange} />
