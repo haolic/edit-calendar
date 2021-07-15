@@ -48,8 +48,6 @@ const EventLine: React.FC<IEventLine> = (props) => {
     'hlc-event-week-first-day': eventInWeekFirstDay,
   });
 
-  console.log(extraClassName);
-
   return draging ? (
     <div
       className="hlc-event"
