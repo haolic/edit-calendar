@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+
 import dayjs, { Dayjs } from 'dayjs';
 import 'dayjs/locale/zh';
 import 'dayjs/locale/en';
+import { v4 as uuid } from 'uuid';
 import Calendar, { EventList } from './index';
 
 dayjs.locale('zh');
@@ -23,31 +25,31 @@ const App = () => {
     },
     {
       timeRange: dayjs().add(1, 'day').format('YYYY-MM-DD'),
-      title: '显卡。',
+      title: uuid(),
     },
     {
       timeRange: dayjs().add(1, 'day').format('YYYY-MM-DD'),
-      title: '显卡。',
+      title: uuid(),
     },
     {
       timeRange: dayjs().add(1, 'day').format('YYYY-MM-DD'),
-      title: '显卡。',
+      title: uuid(),
     },
     {
       timeRange: dayjs().add(1, 'day').format('YYYY-MM-DD'),
-      title: '显卡。',
+      title: uuid(),
     },
     {
       timeRange: dayjs().add(2, 'day').format('YYYY-MM-DD'),
-      title: '显卡。',
+      title: uuid(),
     },
     {
       timeRange: dayjs().add(1, 'day').format('YYYY-MM-DD'),
-      title: '显卡。',
+      title: uuid(),
     },
     {
       timeRange: dayjs().add(1, 'day').format('YYYY-MM-DD'),
-      title: '显卡。',
+      title: uuid(),
     },
     {
       timeRange: [
