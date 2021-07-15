@@ -11,6 +11,7 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
   const { value, eventList, firstDayOfWeek } = props;
   const dayjsMonthStart = value.startOf('month');
   const dayjsMonthEnd = value.endOf('month');
+  const [isDragging, setIsDragging] = useState(false);
   const [eventListState, setEventListState] = useState(eventList);
 
   useEffect(() => {
@@ -68,6 +69,10 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
     setEventListState(newList);
   };
 
+  const changeIsDragging = (val: boolean) => {
+    setIsDragging(val);
+  };
+
   return (
     <div className="hlc-datepanel">
       {allDate.map((dateRow, rowIdx) => {
@@ -84,6 +89,8 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
                   dayjsMonthEnd={dayjsMonthEnd}
                   dayjsMonthStart={dayjsMonthStart}
                   onEventDrop={onEventDrop}
+                  isDragging={isDragging}
+                  changeIsDragging={changeIsDragging}
                 />
               );
             })}

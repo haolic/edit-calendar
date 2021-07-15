@@ -23,6 +23,8 @@ interface IDateCell {
   dayjsMonthStart: Dayjs;
   dayjsMonthEnd: Dayjs;
   onEventDrop: IEventLine['onEventDrop'];
+  isDragging: boolean;
+  changeIsDragging: (val: boolean) => void;
 }
 
 interface IDatepanel {
@@ -53,4 +55,6 @@ interface IEventLine {
   eventItem: IEventItem;
   date: Dayjs;
   onEventDrop: (eventItem: IEventItem, dropResult: DropResult | null) => void;
+  isDragging: boolean;
+  changeIsDragging: (val: boolean) => void;
 }

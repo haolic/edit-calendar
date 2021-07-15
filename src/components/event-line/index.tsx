@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classnames from 'classnames';
 import computedStyle from '../../utils/computedStyle';
 import { IEventLine, DropResult } from '../types';
@@ -7,13 +7,13 @@ import { useDrag } from 'react-dnd';
 import './index.less';
 
 const EventLine: React.FC<IEventLine> = (props) => {
-  const { eventItem, date, onEventDrop } = props;
+  const { eventItem, date, onEventDrop, isDragging, changeIsDragging } = props;
   const { isEventFirstDay, title } = eventItem;
   const day = date.day();
   const eventInWeekFirstDay = day === date.startOf('week').day();
   const showThisEventBox = isEventFirstDay || eventInWeekFirstDay;
 
-  const [, drag] = useDrag(
+  const [{ draging }, drag, dragPreview] = useDrag(
     () => ({
       type: 'event',
       item: { ...eventItem, eventIndex: eventItem.eventIndex },
@@ -22,12 +22,16 @@ const EventLine: React.FC<IEventLine> = (props) => {
         onEventDrop(item, dropResult);
       },
       collect: (monitor) => ({
-        isDragging: monitor.isDragging(),
+        draging: monitor.isDragging(),
         handlerId: monitor.getHandlerId(),
       }),
     }),
     [eventItem]
   );
+
+  useEffect(() => {
+    changeIsDragging(draging);
+  }, [draging]);
 
   let style = undefined;
   let extraClassName: {
@@ -43,10 +47,21 @@ const EventLine: React.FC<IEventLine> = (props) => {
     'hlc-event-week-first-day': eventInWeekFirstDay,
   });
 
-  return (
+  return draging ? (
+    <div
+      ref={dragPreview}
+      style={{
+        pointerEvents: isDragging ? 'none' : 'auto',
+      }}
+    ></div>
+  ) : (
     <div
       className={cls}
-      style={{ ...style, borderColor: style && style.color }}
+      style={{
+        ...style,
+        borderColor: style && style.color,
+        pointerEvents: isDragging ? 'none' : 'auto',
+      }}
       ref={drag}
     >
       {/* 事件起始日期或不是起始日期，但是在每周第一天里需要显示title */}

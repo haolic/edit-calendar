@@ -12,7 +12,15 @@ import EventLine from '../event-line';
 dayjs.extend(isoWeek);
 
 const DateCell: React.FC<IDateCell> = (props) => {
-  const { date, events, dayjsMonthStart, dayjsMonthEnd, onEventDrop } = props;
+  const {
+    date,
+    events,
+    dayjsMonthStart,
+    dayjsMonthEnd,
+    onEventDrop,
+    isDragging,
+    changeIsDragging,
+  } = props;
   const [, drop] = useDrop(() => ({
     accept: 'event',
     drop: () => ({ date }),
@@ -49,6 +57,8 @@ const DateCell: React.FC<IDateCell> = (props) => {
             eventItem={eventItem}
             date={date}
             onEventDrop={onEventDrop}
+            isDragging={isDragging}
+            changeIsDragging={changeIsDragging}
           />
         );
       })}
