@@ -53,8 +53,8 @@ const App = () => {
     },
     {
       timeRange: [
-        dayjs().subtract(5, 'days').format('YYYY-MM-DD'),
-        dayjs().add(7, 'days').format('YYYY-MM-DD'),
+        dayjs().subtract(5, 'years').format('YYYY-MM-DD'),
+        dayjs().add(7, 'years').format('YYYY-MM-DD'),
       ],
       title:
         '1式发布RX 次发布的RX 6000系列显卡一共有三款，分别是RX 6900 XT、RX 6800XT以及RX 6800显卡。',
