@@ -16,6 +16,16 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
   const [currentActiveEventId, setCurrentActiveEventId] = useState('');
 
   useEffect(() => {
+    const bodyClick = () => {
+      setCurrentActiveEventId('');
+    };
+    document.body.addEventListener('click', bodyClick);
+    return () => {
+      document.body.removeEventListener('click', bodyClick);
+    };
+  }, []);
+
+  useEffect(() => {
     const sortedEventList = eventList.sort((a, b) => {
       let _a = a.timeRange;
       let _b = b.timeRange;

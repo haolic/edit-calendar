@@ -54,7 +54,8 @@ const EventLine: React.FC<IEventLine> = (props) => {
   const cls = classnames('hlc-event', extraClassName, {
     'hlc-event-first-day': isEventFirstDay,
     'hlc-event-week-first-day': eventInWeekFirstDay,
-    'hlc-event-active': currentActiveEventId === eventItem.id && showThisEventBox,
+    'hlc-event-active':
+      currentActiveEventId === eventItem.id && showThisEventBox,
   });
 
   return draging ? (
@@ -74,7 +75,10 @@ const EventLine: React.FC<IEventLine> = (props) => {
         pointerEvents: isDragging ? 'none' : 'auto',
       }}
       ref={drag}
-      onClick={() => eventClick(eventItem)}
+      onClick={(e) => {
+        e.stopPropagation();
+        eventClick(eventItem);
+      }}
     >
       {/* 事件起始日期或不是起始日期，但是在每周第一天里需要显示title */}
       <div
