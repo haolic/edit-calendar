@@ -49,6 +49,7 @@ const EventLine: React.FC<IEventLine> = (props) => {
 
   return draging ? (
     <div
+      className="hlc-event"
       ref={dragPreview}
       style={{
         pointerEvents: isDragging ? 'none' : 'auto',
