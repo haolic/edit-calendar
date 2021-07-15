@@ -13,6 +13,7 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
   const dayjsMonthEnd = value.endOf('month');
   const [isDragging, setIsDragging] = useState(false);
   const [eventListState, setEventListState] = useState(eventList);
+  const [currentActiveEventId, setCurrentActiveEventId] = useState('');
 
   useEffect(() => {
     const sortedEventList = eventList.sort((a, b) => {
@@ -73,6 +74,9 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
     setIsDragging(val);
   };
 
+  const onEventClick = (val: IEventItem) => {
+    setCurrentActiveEventId(val.id as string);
+  };
   return (
     <div className="hlc-datepanel">
       {allDate.map((dateRow, rowIdx) => {
@@ -91,6 +95,8 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
                   onEventDrop={onEventDrop}
                   isDragging={isDragging}
                   changeIsDragging={changeIsDragging}
+                  currentActiveEventId={currentActiveEventId}
+                  eventClick={onEventClick}
                 />
               );
             })}

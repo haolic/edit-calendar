@@ -20,6 +20,8 @@ const DateCell: React.FC<IDateCell> = (props) => {
     onEventDrop,
     isDragging,
     changeIsDragging,
+    currentActiveEventId,
+    eventClick,
   } = props;
   const [, drop] = useDrop(() => ({
     accept: 'event',
@@ -59,6 +61,8 @@ const DateCell: React.FC<IDateCell> = (props) => {
             onEventDrop={onEventDrop}
             isDragging={isDragging}
             changeIsDragging={changeIsDragging}
+            currentActiveEventId={currentActiveEventId}
+            eventClick={eventClick}
           />
         );
       })}

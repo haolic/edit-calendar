@@ -25,6 +25,8 @@ interface IDateCell {
   onEventDrop: IEventLine['onEventDrop'];
   isDragging: boolean;
   changeIsDragging: (val: boolean) => void;
+  currentActiveEventId: string;
+  eventClick: (val: IEventItem) => void;
 }
 
 interface IDatepanel {
@@ -57,4 +59,6 @@ interface IEventLine {
   onEventDrop: (eventItem: IEventItem, dropResult: DropResult | null) => void;
   isDragging: boolean;
   changeIsDragging: (val: boolean) => void;
+  currentActiveEventId: string;
+  eventClick: (val: IEventItem) => void;
 }

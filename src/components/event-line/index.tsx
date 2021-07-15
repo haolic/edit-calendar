@@ -8,7 +8,15 @@ import EventStatus from '../event-status';
 import './index.less';
 
 const EventLine: React.FC<IEventLine> = (props) => {
-  const { eventItem, date, onEventDrop, isDragging, changeIsDragging } = props;
+  const {
+    eventItem,
+    date,
+    onEventDrop,
+    isDragging,
+    changeIsDragging,
+    currentActiveEventId,
+    eventClick,
+  } = props;
   const { isEventFirstDay, title, timeRange } = eventItem;
   const day = date.day();
   const eventInWeekFirstDay = day === date.startOf('week').day();
@@ -46,6 +54,7 @@ const EventLine: React.FC<IEventLine> = (props) => {
   const cls = classnames('hlc-event', extraClassName, {
     'hlc-event-first-day': isEventFirstDay,
     'hlc-event-week-first-day': eventInWeekFirstDay,
+    'hlc-event-active': currentActiveEventId === eventItem.id && showThisEventBox,
   });
 
   return draging ? (
@@ -65,6 +74,7 @@ const EventLine: React.FC<IEventLine> = (props) => {
         pointerEvents: isDragging ? 'none' : 'auto',
       }}
       ref={drag}
+      onClick={() => eventClick(eventItem)}
     >
       {/* 事件起始日期或不是起始日期，但是在每周第一天里需要显示title */}
       <div
