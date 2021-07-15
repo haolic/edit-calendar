@@ -61,6 +61,7 @@ const dateInfoGen = (
     });
     arr.push(item);
   }
+
   return arr;
 };
 

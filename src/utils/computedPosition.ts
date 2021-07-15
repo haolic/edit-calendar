@@ -1,8 +1,6 @@
 import _ from 'lodash';
 import { DateCellItem, IEventItem } from '../components/types';
 
-let a = 0;
-
 const computedPosition = (list: DateCellItem[]) => {
   const obj: { [key: string]: any } = {};
   list.forEach((el) => {
@@ -17,7 +15,6 @@ const computedPosition = (list: DateCellItem[]) => {
       });
 
       el.eventList.forEach((item) => {
-        console.log(a++);
         const id: string = item.id as string;
         if (!obj[id]) {
           obj[id] = [item];

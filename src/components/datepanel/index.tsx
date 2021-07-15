@@ -74,7 +74,7 @@ const Datepanel: React.FC<IDatepanel> = (props) => {
         const res = computedPosition(dateRow);
         return (
           <div key={rowIdx} className="hlc-daterow">
-            {dateRow.map((item) => {
+            {res.map((item) => {
               const { date, eventList } = item;
               return (
                 <DateCell
