@@ -3,12 +3,13 @@ import classnames from 'classnames';
 import computedStyle from '../../utils/computedStyle';
 import { IEventLine, DropResult } from '../types';
 import { useDrag } from 'react-dnd';
+import EventStatus from '../event-status';
 
 import './index.less';
 
 const EventLine: React.FC<IEventLine> = (props) => {
   const { eventItem, date, onEventDrop, isDragging, changeIsDragging } = props;
-  const { isEventFirstDay, title } = eventItem;
+  const { isEventFirstDay, title, timeRange } = eventItem;
   const day = date.day();
   const eventInWeekFirstDay = day === date.startOf('week').day();
   const showThisEventBox = isEventFirstDay || eventInWeekFirstDay;
@@ -74,6 +75,7 @@ const EventLine: React.FC<IEventLine> = (props) => {
       ></div>
       {showThisEventBox && (
         <div className="hlc-event-text" title={title}>
+          <EventStatus timeRange={timeRange} />
           {title || '未命名事件'}
         </div>
       )}
