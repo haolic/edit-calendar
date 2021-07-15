@@ -28,6 +28,7 @@ const EventLine: React.FC<IEventLine> = (props) => {
       item: { ...eventItem, eventIndex: eventItem.eventIndex },
       end: (item, monitor) => {
         const dropResult = monitor.getDropResult<DropResult>();
+        changeIsDragging(false);
         onEventDrop(item, dropResult);
       },
       collect: (monitor) => ({
@@ -91,9 +92,10 @@ const EventLine: React.FC<IEventLine> = (props) => {
         <div
           className="hlc-event-need-break-block"
           style={{
-            border: `2px solid ${style && style.color}`,
-            borderBottomColor: 'transparent',
-            borderRightColor: 'transparent',
+            borderTop: `2px solid ${style && style.color}`,
+            borderLeft: `2px solid ${style && style.color}`,
+            borderBottom: `2px solid transparent`,
+            borderRight: `2px solid transparent`,
           }}
         ></div>
       )}
@@ -102,9 +104,10 @@ const EventLine: React.FC<IEventLine> = (props) => {
         <div
           className="hlc-event-need-prev-block"
           style={{
-            border: `2px solid ${style && style.color}`,
-            borderTopColor: 'transparent',
-            borderLeftColor: 'transparent',
+            borderTop: `2px solid transparent`,
+            borderLeft: `2px solid transparent`,
+            borderBottom: `2px solid ${style && style.color}`,
+            borderRight: `2px solid ${style && style.color}`,
           }}
         ></div>
       )}
