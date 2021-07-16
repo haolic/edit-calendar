@@ -40,7 +40,10 @@ const App = () => {
       title: uuid(),
     },
     {
-      timeRange: dayjs().add(2, 'day').format('YYYY-MM-DD'),
+      timeRange: [
+        dayjs().add(2, 'day').format('YYYY-MM-DD'),
+        dayjs().add(4, 'day').format('YYYY-MM-DD'),
+      ],
       title: uuid(),
     },
     {
