@@ -36,7 +36,7 @@ const computedStyle = (
       /**
        * throughNum为事件条需要跨越的日期个数，
        * CELL_PADDING为日期格的padding大小，
-       * 2 * throughNum + 1是所有跨越的padding的宽度，
+       * 2 * throughNum + 1是所有跨越的padding的个数，
        * 最后的加的throughNum为跨越的日起格边框宽度。
        * 最后加5为模拟折角效果需要延伸的长度。
        */
